@@ -1,0 +1,48 @@
+.recipe {
+    margin-left: 100px;
+    display: flex;
+    width: 310px;
+    height: auto;
+    position: relative;
+    border-radius: 12px;
+    border: none;
+    align-items: center;
+    gap: 20px;
+    justify-content: space-around;
+    margin: 10px;
+    flex-wrap: wrap;
+    color: #ff3c00;
+    align-items: flex-start;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0, 1);
+}
+
+
+
+
+.recipe:hover {
+    transform: scale(1.05, 1.05);
+}
+
+.container {
+    width: 100%;
+    margin-top: 3rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+
+    margin-top: "50px";
+    padding-left: "30px"
+}
+
+
+.recipeCard {
+    line-height: 1rem;
+    width: 250px;
+    color: #ff3c00;
+    padding: 10px;
+    overflow: hidden;
+    text-align: center;
+    margin: 10px 0;
+}

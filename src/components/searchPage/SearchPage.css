@@ -1,0 +1,19 @@
+.containerSearch {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.pageNumbers {
+    margin-left: 647px;
+    margin-top: 27px;
+}
+
+.search {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

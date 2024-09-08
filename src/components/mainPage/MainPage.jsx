@@ -4,21 +4,34 @@ import Glove from "../../assets/glove.jpg";
 import Mobile from "../../assets/mobile.jpg";
 import Bowl from "../../assets/bowl.jpg";
 import { motion } from "framer-motion"
+import "./MainPage.css"
+import { useNavigate } from 'react-router-dom';
 import { faTags, faMagnifyingGlass, faThumbtack, faCloudArrowUp } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import Button from '@mui/material/Button';
+import NavBar from "../navBar/NavBar";
 
 function MainPage() {
+    const navigate = useNavigate();
+
+    const tranferPage = () => {
+        navigate('/search')
+    }
+
     return (
         <div>
+            <NavBar />
             <div className="curvedUp">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#ff3c00" fill-opacity="1" d="M0,160L40,154.7C80,149,160,139,240,149.3C320,160,400,192,480,208C560,224,640,224,720,197.3C800,171,880,117,960,122.7C1040,128,1120,192,1200,208C1280,224,1360,192,1400,176L1440,160L1440,320L1400,320C1360,320,1280,320,1200,320C1120,320,1040,320,960,320C880,320,800,320,720,320C640,320,560,320,480,320C400,320,320,320,240,320C160,320,80,320,40,320L0,320Z"></path></svg>
             </div>
             <div className="curved">
                 <div className="title">
                     Get recipe organised
+                    <Button size="medium" variant="contained" style={{ color: "#ff3c00", outlineColor: "black", marginLeft: "40px", background: 'white' }} onClick={tranferPage}>Get Started Now!</Button>
+
                 </div>
-                <p style={{ fontSize: "25px", textAlign: "center" }}>Streamline your recipe collection and effortlessly locate the perfect dish for any occasion</p>
-                <p style={{ fontSize: "25px", textAlign: "center" }}> Get Started </p>
+                <p style={{ fontSize: "25px", textAlign: "center" }}>Streamline your recipe collection and effortlessly locate the perfect dish for any occasion!</p>
+
                 <motion.div
                     initial={{ y: "-190px" }}
                     animate={{ scale: 1, x: 10, y: -100 }}

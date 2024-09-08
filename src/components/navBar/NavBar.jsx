@@ -1,14 +1,6 @@
 import Logo from "../../assets/logo.png";
-import Berry from "../../assets/berry.jpg";
-import Curry from "../../assets/curry.jpg";
-import Glove from "../../assets/glove.jpg";
-import Mobile from "../../assets/mobile.jpg";
-import Bowl from "../../assets/bowl.jpg";
-import { motion } from "framer-motion"
 import "./NavBar.css";
 import SelectMenu from "../selectMenu/SelectMenu";
-import { faTags, faMagnifyingGlass, faThumbtack, faCloudArrowUp } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 
 const options = ['HOME', 'ABOUT']
