@@ -8,9 +8,7 @@ import Stack from '@mui/material/Stack';
 
 
 function RecipePage() {
-    useEffect(() => {
-        showRecipe();
-    })
+
     const location = useLocation();
 
     var recipeId = location.state.recipeId;
@@ -20,24 +18,27 @@ function RecipePage() {
 
     const [recipe, setRecipe] = useState(null);
 
-    const showRecipe = async (title) => {
-        try {
-            const response = await fetch(
-                `https://api.spoonacular.com/recipes/${recipeId}/information?includeNutrition=true&apiKey=${API_KEY}`
-            );
+    useEffect(() => {
+        const showRecipe = async () => {
+            try {
+                const response = await fetch(
+                    `https://api.spoonacular.com/recipes/${recipeId}/information?includeNutrition=true&apiKey=${API_KEY}`
+                );
 
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+
+                const data = await response.json();
+                console.log(data);
+                setRecipe(data);
+            } catch (err) {
+                console.error(err);
             }
+        };
 
-            const data = await response.json();
-            console.log(data)
-            setRecipe(data)
-        } catch (err) {
-            console.error(err);
-        }
-
-    }
+        showRecipe();
+    }, [recipeId, API_KEY]);
     return (
         <>
             <NavBar></NavBar>
