@@ -25,6 +25,7 @@ import Chip from '@mui/material/Chip';
 
 function SearchPage() {
     const API_KEY = "d13f0132d2ec41ce8e06379ee4590fdc"
+    //"d13f0132d2ec41ce8e06379ee4590fdc"
     // "1c0283e182bd43dfb10593e598f12820";// mk9810
     const ListItem = styled('li')(({ theme }) => ({
         margin: theme.spacing(0.5),
@@ -203,7 +204,7 @@ function SearchPage() {
                                 variant={chipVariants.find((c) => c.key === chip.key)?.variant || 'outlined'}
                                 label={chip.label}
                                 onClick={() => handleClick(chip.key, chip.label)}
-                                style={{ marginLeft: '15px', color: 'white', backgroundColor: '#ff3c00' }}
+                                style={{ marginLeft: '15px', color: 'white', backgroundColor: '#ff3c00', marginBottom: "30px", marginTop: '-50px' }}
                                 icon={chipVariants.find((c) => c.key === chip.key)?.variant === 'outlined' ? <AddCircleIcon style={{ color: 'white' }} /> : <CancelIcon style={{ color: 'white' }} />}
                             />
                         ))}
