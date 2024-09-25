@@ -24,7 +24,7 @@ import Chip from '@mui/material/Chip';
 
 
 function SearchPage() {
-    const API_KEY = "d13f0132d2ec41ce8e06379ee4590fdc"
+    const API_KEY = "1c0283e182bd43dfb10593e598f12820"
     //"d13f0132d2ec41ce8e06379ee4590fdc"
     // "1c0283e182bd43dfb10593e598f12820";// mk9810
     const ListItem = styled('li')(({ theme }) => ({

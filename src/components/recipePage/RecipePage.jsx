@@ -5,13 +5,17 @@ import parse from 'html-react-parser';
 import NavBar from '../navBar/NavBar'
 import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCaretRight, faXmark } from '@fortawesome/free-solid-svg-icons'
+import { Dialog, DialogActions, DialogContent, DialogTitle } from '@mui/material';
 function RecipePage() {
     const location = useLocation();
     const recipeId = location.state.recipeId;
-    const API_KEY = "d13f0132d2ec41ce8e06379ee4590fdc"; // Ensure to keep your API key secure
+    const API_KEY = "1c0283e182bd43dfb10593e598f12820"
+    //"d13f0132d2ec41ce8e06379ee4590fdc"; // Ensure to keep your API key secure
 
     const [recipe, setRecipe] = useState(null);
+    const [dialogOpen, setDialogOpen] = useState(false)
 
     useEffect(() => {
         const showRecipe = async () => {
@@ -35,6 +39,51 @@ function RecipePage() {
         showRecipe();
     }, [recipeId, API_KEY]);
 
+    const IngredientDialog = ({ open, onclose, recipe }) => {
+        return (
+            <Dialog open={open} onclose={onclose}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                    <DialogTitle>Ingredients </DialogTitle>
+                    <DialogActions>
+                        <FontAwesomeIcon icon={faXmark} onClick={onclose} style={{ color: "#ff3c00", marginTop: "-20px", cursor: "pointer" }} />
+                    </DialogActions>
+
+                </div>
+                <DialogContent>
+                    {recipe.extendedIngredients && recipe.extendedIngredients.map((ingredient, id) => (
+                        <div key={id} >
+
+                            {ingredient.nameClean}
+                            <br />Measurements:
+                            {ingredient.measures && (
+                                <div key={id}>
+                                    US:
+                                    {ingredient.measures.us.amount} {ingredient.measures.us.unitLong}
+                                </div>
+                            )}
+                            {ingredient.measures && (
+                                <div key={id}>
+                                    Metric:
+                                    {ingredient.measures.metric.amount} {ingredient.measures.metric.unitLong}
+                                </div>
+                            )}
+                        </div>
+                    ))}
+
+                </DialogContent>
+            </Dialog>
+        )
+    }
+    const openDialog = (event) => {
+        event.preventDefault();
+        setDialogOpen(true)
+    }
+
+    const dialogClose = (event) => {
+        event.preventDefault();
+        setDialogOpen(false)
+    }
+
     return (
         <>
             <NavBar />
@@ -56,18 +105,23 @@ function RecipePage() {
                                 alt={recipe.title} />
 
                             <div style={{
-                                height: 'auto', width: "180px", flexWrap: "wrap", padding: "10px",
-                                backgroundColor: 'rgb(243, 241, 241)', borderRadius: "20px", fontSize: "20px"
+                                height: 'auto', width: "160px", flexWrap: "wrap", padding: "15px",
+                                backgroundColor: 'rgb(243, 241, 241)', borderRadius: "10px", fontSize: "20px", textAlign: "initial"
                             }}>
-                                <h6>Ready In Minutes: {recipe.readyInMinutes > 0 ? recipe.readyInMinutes : "N/A"}</h6>
-                                <h6>Servings: {recipe.servings}</h6>
-                                <h6>Health Score: {recipe.healthScore}</h6>
+                                <div style={{ fontSize: "15px", color: 'gray' }}> ready in: </div>
+                                <div style={{ fontSize: "14px", paddingTop: "10px", fontWeight: "500" }}> {recipe.readyInMinutes > 0 ? recipe.readyInMinutes : "N/A"} minutes </div>
+                                <div style={{ fontSize: "15px", color: 'gray', paddingTop: "10px" }}> servings: </div>
+                                <div style={{ fontSize: "14px", paddingTop: "10px", fontWeight: "500" }}>{recipe.servings} </div>
+                                <div style={{ fontSize: "15px", color: 'gray', paddingTop: "10px" }}> health score: </div>
+                                <div style={{ fontSize: "14px", paddingTop: "10px", paddingBottom: "10px", fontWeight: "500" }}>{recipe.healthScore} </div>
 
+                                <a href='#' style={{ color: "#ff3c00", fontSize: '15px', textDecoration: "none" }} onClick={openDialog}> Start Cooking Now! <FontAwesomeIcon icon={faCaretRight} style={{ color: "#ff3c00", }} /> </a>
+                                <IngredientDialog open={dialogOpen} onclose={dialogClose} recipe={recipe}></IngredientDialog>
                             </div>
                         </div>
 
 
-                        <div className="container1" style={{ lineHeight: "30px", width: "600px" }}>
+                        <div className="container1" style={{ lineHeight: "40px", width: "600px" }}>
                             <h4> Ingredients </h4>
                             {recipe.extendedIngredients && recipe.extendedIngredients.map((ingredient, id) => (
                                 <div key={id} >
