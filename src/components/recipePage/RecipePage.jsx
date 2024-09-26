@@ -1,4 +1,3 @@
-import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import React, { useEffect, useState } from "react";
 import parse from 'html-react-parser';
@@ -7,7 +6,11 @@ import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCaretRight, faXmark } from '@fortawesome/free-solid-svg-icons'
-import { Dialog, DialogActions, DialogContent, DialogTitle } from '@mui/material';
+import { Checkbox, Dialog, DialogActions, DialogContent, DialogTitle, TableBody, TableCell, TableContainer } from '@mui/material';
+import Table from '@mui/material/Table';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+
 function RecipePage() {
     const location = useLocation();
     const recipeId = location.state.recipeId;
@@ -41,7 +44,8 @@ function RecipePage() {
 
     const IngredientDialog = ({ open, onclose, recipe }) => {
         return (
-            <Dialog open={open} onclose={onclose}>
+
+            <Dialog open={open} onclose={onclose} style={{ width: "auto", height: "auto" }}>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                     <DialogTitle>Ingredients </DialogTitle>
                     <DialogActions>
@@ -50,28 +54,49 @@ function RecipePage() {
 
                 </div>
                 <DialogContent>
-                    {recipe.extendedIngredients && recipe.extendedIngredients.map((ingredient, id) => (
-                        <div key={id} >
-
-                            {ingredient.nameClean}
-                            <br />Measurements:
-                            {ingredient.measures && (
-                                <div key={id}>
-                                    US:
-                                    {ingredient.measures.us.amount} {ingredient.measures.us.unitLong}
-                                </div>
-                            )}
-                            {ingredient.measures && (
-                                <div key={id}>
-                                    Metric:
-                                    {ingredient.measures.metric.amount} {ingredient.measures.metric.unitLong}
-                                </div>
-                            )}
+                    <TableContainer  >
+                        <Table sx={{ minWidth: 650 }} size="small">
+                            <TableHead>
+                                <TableRow sx={{ backgroundColor: "#ff3c00", color: "white" }}>
+                                    <TableCell >Ingredient </TableCell>
+                                    <TableCell> Measurement in US</TableCell>
+                                    <TableCell> Measurement in metric</TableCell>
+                                    <TableCell> Calories </TableCell>
+                                </TableRow>
+                            </TableHead>
+                            <TableBody>
+                                {recipe.extendedIngredients && recipe.extendedIngredients.map((ingredient, id) => (
+                                    <TableRow key={id} sx={{ '&:last-child td,&:last-child th': { border: 0 } }}>
+                                        <TableCell>
+                                            <Checkbox />
+                                            {ingredient.nameClean}
+                                        </TableCell>
+                                        <TableCell>
+                                            {ingredient.measures.us.amount} {ingredient.measures.us.unitLong}
+                                        </TableCell>
+                                        <TableCell>
+                                            {ingredient.measures.metric.amount} {ingredient.measures.metric.unitLong}
+                                        </TableCell>
+                                    </TableRow>
+                                ))}
+                            </TableBody>
+                        </Table>
+                    </TableContainer>
+                    <h4> Instructions </h4>
+                    {recipe.analyzedInstructions && recipe.analyzedInstructions.map((instruction, index) => (
+                        <div key={index}>
+                            <h5>{instruction.name}</h5>
+                            <ol>
+                                {instruction.steps.map((step, stepIndex) => (
+                                    <li key={stepIndex}>{parse(step.step)}</li>
+                                ))}
+                            </ol>
                         </div>
                     ))}
 
                 </DialogContent>
             </Dialog>
+
         )
     }
     const openDialog = (event) => {
@@ -128,17 +153,7 @@ function RecipePage() {
                                     {ingredient.amount} {ingredient.unit} {ingredient.nameClean}
                                 </div>
                             ))}
-                            <h4> Instructions </h4>
-                            {recipe.analyzedInstructions && recipe.analyzedInstructions.map((instruction, index) => (
-                                <div key={index}>
-                                    <h5>{instruction.name}</h5>
-                                    <ol>
-                                        {instruction.steps.map((step, stepIndex) => (
-                                            <li key={stepIndex}>{parse(step.step)}</li>
-                                        ))}
-                                    </ol>
-                                </div>
-                            ))}
+
                         </div>
                     </div>
                 )}
