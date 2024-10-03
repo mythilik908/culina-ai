@@ -1,6 +1,3 @@
-
-
-
 import NavBar from '../navBar/NavBar'
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
@@ -16,7 +13,6 @@ import RecipeCard from '../recipeCard/RecipeCard';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 import { styled } from '@mui/material/styles';
-import TagFacesIcon from '@mui/icons-material/TagFaces';
 import PaginationItem from '@mui/material/PaginationItem';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
@@ -24,13 +20,14 @@ import Chip from '@mui/material/Chip';
 
 
 function SearchPage() {
-    const API_KEY = "1c0283e182bd43dfb10593e598f12820"
+    const API_KEY = "8b1f59a93b0b4627be2b61d364ba89f3"
     //"d13f0132d2ec41ce8e06379ee4590fdc"
     // "1c0283e182bd43dfb10593e598f12820";// mk9810
     const ListItem = styled('li')(({ theme }) => ({
         margin: theme.spacing(0.5),
     }));
 
+    const [likedRecipes, setLikedRecipes] = useState([]);
 
     const [recipes, setRecipes] = useState([]);
     const [prevArray, setPrev] = useState([]);
@@ -134,7 +131,7 @@ function SearchPage() {
 
     return (
         <>
-            <NavBar />
+            <NavBar likedCount={likedRecipes} />
             <Box
                 sx={{
                     display: 'flex',
@@ -219,7 +216,7 @@ function SearchPage() {
                         recipes?.length > 0 ? (
                             <>
                                 <div className="containerSearch" style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "20px" }}>
-                                    {recipes.map((recipe) => (<RecipeCard recipe={recipe} key={recipe.id} />))}
+                                    {recipes.map((recipe) => (<RecipeCard recipe={recipe} key={recipe.id} likedRecipes={likedRecipes} setLikedRecipes={setLikedRecipes} />))}
                                 </div>
                                 <Stack spacing={2} sx={{ marginTop: '100px', marginBottom: '20px', marginLeft: "650px" }}>
                                     <Pagination

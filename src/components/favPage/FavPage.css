@@ -1,0 +1,14 @@
+.fav {
+    padding-left: 22em;
+    display: flex;
+    flex-direction: column;
+    text-wrap: wrap;
+    width: 45em;
+    padding-top: 3em
+}
+
+.images {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}

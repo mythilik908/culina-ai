@@ -13,14 +13,20 @@ import TableRow from '@mui/material/TableRow';
 
 function RecipePage() {
     const location = useLocation();
-    const recipeId = location.state.recipeId;
-    const API_KEY = "1c0283e182bd43dfb10593e598f12820"
+    const recipeId = location.state?.recipeId;
+    const API_KEY = "8b1f59a93b0b4627be2b61d364ba89f3"
+    const likedRecipes = location.state.likedCount || [];
+    //"1c0283e182bd43dfb10593e598f12820"
     //"d13f0132d2ec41ce8e06379ee4590fdc"; // Ensure to keep your API key secure
 
     const [recipe, setRecipe] = useState(null);
     const [dialogOpen, setDialogOpen] = useState(false)
 
     useEffect(() => {
+        if (!recipeId && likedRecipes.length > 0) {
+            console.error('No recipe ID found.');
+            return
+        }
         const showRecipe = async () => {
             try {
                 const response = await fetch(
@@ -40,7 +46,7 @@ function RecipePage() {
         };
 
         showRecipe();
-    }, [recipeId, API_KEY]);
+    }, [recipeId, [likedRecipes], API_KEY]);
 
     const IngredientDialog = ({ open, onclose, recipe }) => {
         return (
@@ -111,7 +117,7 @@ function RecipePage() {
 
     return (
         <>
-            <NavBar />
+            <NavBar likedCount={likedRecipes} />
             <div className='recipeCard1'>
                 {recipe && (
                     <div key={recipe.id} style={{ marginLeft: "400px" }}>

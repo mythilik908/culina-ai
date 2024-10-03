@@ -24,7 +24,7 @@ function SelectMenu(props) {
                 sx={{
                     "&.MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
                         borderColor: "transparent"
-                    }
+                    }, fontSize: "13px", letterSpacing: "1.1px"
                 }}
             >
                 {
@@ -32,7 +32,8 @@ function SelectMenu(props) {
                         <MenuItem key={index}
                             sx={{
                                 fontFamily: 'Roboto',
-                                color: index === 0 && open ? 'orange' : 'black'
+                                color: index === 0 && open ? 'orange' : 'black',
+                                fontSize: "13px", letterSpacing: "1.1px"
                             }}
                             value={option}>{option}</MenuItem>
                     ))
