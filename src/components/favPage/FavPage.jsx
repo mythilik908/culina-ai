@@ -4,15 +4,20 @@ import { useNavigate } from 'react-router-dom';
 import React, { useEffect, useState } from "react";
 import { faHeart, faUtensils, faSpoon, faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import Button from '@mui/material/Button';
+
 
 import './FavPage.css'
 function FavPage() {
     const navigate = useNavigate();
-    const API_KEY = "8b1f59a93b0b4627be2b61d364ba89f3"
+    const API_KEY = "d13f0132d2ec41ce8e06379ee4590fdc"
     //"d13f0132d2ec41ce8e06379ee4590fdc"
     //"1c0283e182bd43dfb10593e598f12820";
     const location = useLocation();
     const likedRecipes = location.state.likedCount || [];
+    const [writeNotes, setWriteNotes] = useState("");
+    const [text, setText] = useState('');
+
     console.log(likedRecipes)
     const [recipesData, setRecipesData] = useState([]); // To store recipe summaries
 
@@ -24,6 +29,16 @@ function FavPage() {
         }
     }, [likedRecipes]);
 
+    const handleNotes = () => {
+        setWriteNotes(true)
+    }
+    const handleChange = (event) => {
+        setText(event.target.value);
+    };
+
+    const modifyNotes = () => {
+        setWriteNotes(false)
+    }
     const handleNavigate = (recipeId) => {
         if (recipeId) {
             navigate('/recipe', { state: { recipeId } });
@@ -75,7 +90,39 @@ function FavPage() {
                             <p style={{ marginTop: "-2px", fontSize: "15px" }}> {recipe.ready}</p>
                             <FontAwesomeIcon icon={faUtensils} style={{ color: "#ff3c00" }} />
                             <p style={{ marginTop: "-2px", fontSize: "15px", fontWeight: "600" }}> {recipe.servings}</p>
-                            <FontAwesomeIcon icon={faPenToSquare} style={{ color: "#ff3c00", cursor: "pointer" }} />
+
+                            <FontAwesomeIcon icon={faPenToSquare} style={{ color: "#ff3c00", cursor: "pointer" }} onClick={handleNotes} />
+                            {writeNotes ?
+                                <div >
+                                    <textarea
+                                        value={text}
+                                        onChange={handleChange}
+                                        rows={3}
+                                        cols={50}
+                                        placeholder="Type something here..."
+                                        style={{
+                                            border: '1px solid #ff3c00', // Change the border color
+                                            borderRadius: '10px', // Rounded corners
+                                            padding: '10px', // Padding inside the textarea
+                                            outline: 'none', // Remove the default outline
+                                            resize: 'none', // Prevent resizing
+                                        }}
+                                    />
+                                    <Button
+                                        size="medium"
+                                        variant="contained"
+                                        style={{
+                                            color: "#ff3c00",
+                                            outlineColor: "black",
+                                            background: 'white',
+                                        }}
+                                        onClick={modifyNotes}
+                                    >
+                                        SAVE
+                                    </Button>
+                                </div>
+                                : ""}
+
                         </div>
 
                     </>

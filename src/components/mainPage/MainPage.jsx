@@ -8,27 +8,17 @@ import "./MainPage.css"
 import { useNavigate } from 'react-router-dom';
 import { faTags, faMagnifyingGlass, faThumbtack, faCloudArrowUp, faHeart, faPenToSquare } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import Button from '@mui/material/Button';
 import NavBar from "../navBar/NavBar";
 import { useState } from "react";
+import Button from '@mui/material/Button';
 
 
 function MainPage() {
     const navigate = useNavigate();
-    const [writeNotes, setWriteNotes] = useState("");
-    const [text, setText] = useState('');
     const tranferPage = () => {
         navigate('/search')
     }
-    const handleNotes = () => {
-        setWriteNotes(true)
-    }
-    const handleChange = (event) => {
-        setText(event.target.value);
-    };
-    const modifyNotes = () => {
-        setWriteNotes(false)
-    }
+
 
     return (
         <div>
@@ -92,37 +82,12 @@ function MainPage() {
                             <br />
                             <FontAwesomeIcon icon={faCloudArrowUp} style={{ color: "#74C0FC", }} />
                             <b> Nutrition at your fingertips.</b> View detailed nutrition facts and weight watcher points with ease.
-                            <FontAwesomeIcon icon={faPenToSquare} style={{ color: "#ff3c00", cursor: "pointer" }} onClick={handleNotes} />
-                            {writeNotes ?
-                                <div >
-                                    <textarea
-                                        value={text}
-                                        onChange={handleChange}
-                                        rows={5}
-                                        cols={50}
-                                        placeholder="Type something here..."
-                                        style={{
-                                            border: '1px solid #ff3c00', // Change the border color
-                                            borderRadius: '10px', // Rounded corners
-                                            padding: '10px', // Padding inside the textarea
-                                            outline: 'none', // Remove the default outline
-                                            resize: 'none', // Prevent resizing
-                                        }}
-                                    />
-                                </div>
-                                : ""}
-                            <Button
-                                size="medium"
-                                variant="contained"
-                                style={{
-                                    color: "#ff3c00",
-                                    outlineColor: "black",
-                                    background: 'white',
-                                }}
-                                onClick={() => modifyNotes}
-                            >
-                                SEARCH
-                            </Button>
+                            <br />
+                            <br />
+                            <FontAwesomeIcon icon={faPenToSquare} style={{ color: "#74C0FC", }} />
+                            <b> Add your notes.</b> Capture every delicious detail you discover.
+
+
                         </div>
                     </div>
                 </div>
@@ -156,7 +121,7 @@ function MainPage() {
                         height={450}
                         style={{ marginLeft: "-550px" }}
                         animate={{ rotate: 360 }}
-                        transition={{ duration: 400, repeat: Infinity, ease: "linear" }} // Adjust duration and ease as needed
+                        transition={{ duration: 10, repeat: Infinity, ease: "linear" }} // Adjust duration and ease as needed
                     />
                 </div>
 

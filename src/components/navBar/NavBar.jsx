@@ -15,12 +15,15 @@ function NavBar({ likedCount = [] }) {
     const handleNavigate = () => {
         navigate('/favorites', { state: { likedCount } })
     }
+    const handleNavigation = () => {
+        navigate('/', { state: { likedCount } })
+    }
     return (
 
         < div >
 
             <div className="topBar">
-                <img src={Logo} alt="logo" width={170} height={50} style={{ marginTop: "15px" }}></img>
+                <img src={Logo} alt="logo" width={170} height={50} style={{ marginTop: "15px", cursor: "pointer" }} onClick={handleNavigation} ></img>
                 <div style={{ display: 'flex', alignItems: 'flex-start', marginLeft: "35px", marginTop: "10px", gap: 20, color: "gray" }}>
                     <SelectMenu options={options} ></SelectMenu>
                     <SelectMenu options={menuOptions}></SelectMenu>
