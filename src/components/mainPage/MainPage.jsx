@@ -1,7 +1,6 @@
 import Berry from "../../assets/noodle.webp";
 import Curry from "../../assets/taco.webp";
 import Glove from "../../assets/burger1.webp";
-import Mobile from "../../assets/cooker.png";
 import Bowl from "../../assets/veggie.png";
 import { motion } from "framer-motion"
 import "./MainPage.css"
@@ -9,14 +8,21 @@ import { useNavigate } from 'react-router-dom';
 import { faTags, faMagnifyingGlass, faThumbtack, faCloudArrowUp, faHeart, faPenToSquare } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import NavBar from "../navBar/NavBar";
-import { useState } from "react";
 import Button from '@mui/material/Button';
+import { useAuth } from "../AuthContext";
 
 
 function MainPage() {
+    const { isAuthenticated, userData, login, logout } = useAuth();
+
     const navigate = useNavigate();
     const tranferPage = () => {
-        navigate('/search')
+        login({
+            name: '',
+            picture: '',
+        });
+        window.open('http://localhost:8080/oauth2/authorization/google', 'login', 'width=800,height=600');
+
     }
 
 

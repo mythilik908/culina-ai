@@ -5,17 +5,20 @@ import SearchPage from './components/searchPage/SearchPage'
 import MainPage from './components/mainPage/MainPage';
 import RecipePage from './components/recipePage/RecipePage'
 import FavPage from './components/favPage/FavPage'
+import { AuthProvider } from './components/AuthContext';
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<MainPage />} />
-        <Route path="/search" element={<SearchPage />} />
-        <Route path="/recipe" element={<RecipePage />} />
-        <Route path="/favorites" element={<FavPage />} />
-      </Routes>
-    </Router>
+    <AuthProvider>
+      <Router>
+        <Routes>
+          <Route path="/" element={<MainPage />} />
+          <Route path="/search" element={<SearchPage />} />
+          <Route path="/recipe" element={<RecipePage />} />
+          <Route path="/favorites" element={<FavPage />} />
+        </Routes>
+      </Router>
+    </AuthProvider>
   );
 }
 
