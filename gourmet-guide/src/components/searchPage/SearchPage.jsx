@@ -3,6 +3,7 @@ import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import CancelIcon from '@mui/icons-material/Cancel';
+import ReactMarkdown from 'react-markdown';
 
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -17,7 +18,7 @@ import PaginationItem from '@mui/material/PaginationItem';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import Chip from '@mui/material/Chip';
-
+import './SearchPage.css';
 
 function SearchPage() {
     const API_KEY = "d13f0132d2ec41ce8e06379ee4590fdc"
@@ -52,6 +53,11 @@ function SearchPage() {
         { key: 9, label: 'Dairy Free' },
         { key: 10, label: 'Gluten Free' },
     ]);
+    const [ingredients, setIngredients] = useState("");
+    const [cuisine, setCuisine] = useState("");
+    const [dietary, setDietary] = useState("");
+    const [generatedRecipe, setGeneratedRecipe] = useState("");
+
     const [chipVariants, setChipVariants] = useState(
         chipData.map((chip) => ({ key: chip.key, variant: 'outlined' }))
     );
@@ -124,7 +130,16 @@ function SearchPage() {
     };
 
 
+    const generateRecipe = async () => {
+        try {
+            const response = await fetch(`http://localhost:8080/api/recipe-generator?ingredients=${ingredients}&cuisine=${cuisine}&dietaryRestrictions=${dietary}`);
+            const data = await response.text();
+            setGeneratedRecipe(data);
 
+        } catch (err) {
+            console.error('Error fetching recipes:', err);
+        }
+    };
 
 
     const totalPages = Math.ceil(totalResults / 20);
@@ -207,11 +222,102 @@ function SearchPage() {
                             />
                         ))}
                     </div>
-
-
-
-
                 </div>
+
+                <style>
+                    {`
+          .orange-placeholder::placeholder {
+            color: #ff3c00;
+            font-weight: 600;
+          }
+        `}
+                </style>
+                <p style={{ marginTop: '20px', marginBottom: '30px', fontWeight: 'bold', fontSize: '18px' }}> Have some veggies or any items in your pantry you'd like to use?
+                    <br />Try your luck & generate recipes you never knew you could make! </p>
+                <form className='searchForm'>
+
+                    <div className='generateRecipe'>
+                        <label htmlFor='ingredients' style={{ fontWeight: '600', fontSize: '15px' }}>
+                            What ingredients do you have?
+                        </label>
+                        <input
+                            type="text"
+                            name="generateRecipe"
+                            value={ingredients}
+                            placeholder='Enter ingredients you have..'
+                            onChange={(e) => setIngredients(e.target.value)}
+                            style={{
+                                width: 200,
+                                borderRadius: "4px",
+                                padding: '8px',
+                                borderWidth: 'thin',
+                            }}
+                            className="orange-placeholder"
+                        />
+                    </div>
+
+                    <div className='generateRecipe'>
+                        <label htmlFor='cuisine' style={{ fontWeight: '600', fontSize: '15px' }}>
+                            Any specific cuisine you'd like to try?
+                        </label>
+                        <input
+                            type="text"
+                            name="cuisine"
+                            onChange={(e) => setCuisine(e.target.value)}
+                            value={cuisine}
+                            placeholder='Enter the cuisine you prefer..'
+                            style={{
+                                width: 200,
+                                borderRadius: "4px",
+                                padding: '8px',
+                                borderWidth: 'thin',
+                            }}
+                            className="orange-placeholder"
+                        />
+                    </div>
+
+                    <div className='generateRecipe'>
+                        <label htmlFor='dietary' style={{ fontWeight: '600', fontSize: '15px' }}>
+                            Do you have any dietary restrictions?
+                        </label>
+                        <input
+                            type="text"
+                            name="dietaryRes"
+                            value={dietary}
+                            onChange={(e) => setDietary(e.target.value)}
+                            placeholder='Enter any dietary restrictions you have..'
+                            style={{
+                                width: 200,
+                                borderRadius: "4px",
+                                padding: '8px',
+                                borderWidth: 'thin',
+                            }}
+                            className="orange-placeholder"
+                        />
+
+                    </div>
+
+                </form>
+                <Button
+                    size="medium"
+                    variant="contained"
+                    style={{
+                        background: "#ff3c00",
+                        outlineColor: "black",
+                        color: 'white',
+                        marginTop: '20px'
+                    }}
+                    onClick={() => generateRecipe()}
+                >
+                    Generate Recipe
+                </Button>
+
+                <div className='recipe-text '>
+                    {generatedRecipe ? (
+                        <ReactMarkdown>{generatedRecipe}</ReactMarkdown>
+                    ) : null}
+                </div>
+
                 <div className='search'>
                     {
                         recipes?.length > 0 ? (

@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  gourmet_guide:
+    build: gourmet-guide
+    container_name: gourmet-guide_frontend
+    ports:
+      - "3000:3000"
+    stdin_open: true
+    tty: true
