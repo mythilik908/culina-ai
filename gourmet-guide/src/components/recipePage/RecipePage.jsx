@@ -14,7 +14,7 @@ import TableRow from '@mui/material/TableRow';
 function RecipePage() {
     const location = useLocation();
     const recipeId = location.state?.recipeId;
-    const API_KEY = "d13f0132d2ec41ce8e06379ee4590fdc"; // Use environment variable
+    const API_KEY = process.env.REACT_APP_SPOONACULAR_API_KEY;
     const likedRecipes = useMemo(() => location.state?.likedCount || [], [location.state?.likedCount]);
 
     const [recipe, setRecipe] = useState(null);

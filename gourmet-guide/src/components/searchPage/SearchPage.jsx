@@ -21,10 +21,7 @@ import Chip from '@mui/material/Chip';
 import './SearchPage.css';
 
 function SearchPage() {
-    const API_KEY = "d13f0132d2ec41ce8e06379ee4590fdc"
-    //"8b1f59a93b0b4627be2b61d364ba89f3"
-    //"d13f0132d2ec41ce8e06379ee4590fdc"
-    // "1c0283e182bd43dfb10593e598f12820";// mk9810
+    const API_KEY = process.env.REACT_APP_SPOONACULAR_API_KEY;
     const ListItem = styled('li')(({ theme }) => ({
         margin: theme.spacing(0.5),
     }));

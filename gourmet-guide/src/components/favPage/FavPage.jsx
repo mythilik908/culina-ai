@@ -10,9 +10,7 @@ import Button from '@mui/material/Button';
 import './FavPage.css'
 function FavPage() {
     const navigate = useNavigate();
-    const API_KEY = "d13f0132d2ec41ce8e06379ee4590fdc"
-    //"d13f0132d2ec41ce8e06379ee4590fdc"
-    //"1c0283e182bd43dfb10593e598f12820";
+    const API_KEY = process.env.REACT_APP_SPOONACULAR_API_KEY;
     const location = useLocation();
     const likedRecipes = location.state.likedCount || [];
     const [writeNotes, setWriteNotes] = useState("");

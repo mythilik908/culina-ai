@@ -1,6 +1,19 @@
-# Getting Started with Create React App
+# Gourmet Guide
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## Environment Setup
+
+Before running this application, you need to set up your environment variables:
+
+1. Create a `.env` file in the root directory of the project
+2. Add your Spoonacular API key to the file:
+   ```
+   REACT_APP_SPOONACULAR_API_KEY=your_api_key_here
+   ```
+3. Get your API key by signing up at [Spoonacular Food API](https://spoonacular.com/food-api)
+
+**Note:** The `.env` file is included in `.gitignore` and will not be committed to the repository for security reasons. A `.env.example` file is provided as a template.
 
 ## Available Scripts
 
