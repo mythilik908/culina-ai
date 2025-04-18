@@ -27,12 +27,11 @@
 | Layer               | Tools & Versions                                              |
 |---------------------|---------------------------------------------------------------|
 | **Framework**       | React.js 18.3.1 + React Router 6.26.1                         |
-| **UI**              | Material UI 5.16.7, MUI Joy 5.0.0‑beta.48, Emotion 11.13.0    |
+| **UI**              | Material UI 5.16.7    |
 | **Animations**      | Framer Motion 11.3.19                                         |
 | **Styling**         | FontAwesome 6.6.0, Open Sans & Roboto (via Fontsource)       |
 | **State**           | React Context API & Hooks                                     |
-| **API**             | Spoonacular Food API                                          |
-| **Testing**         | Jest & React Testing Library                                  |
+| **API**             | Spoonacular Food API                                                                         |
 | **Build & Lint**    | React Scripts 5.0.1, ESLint                                   |
 
 ---
