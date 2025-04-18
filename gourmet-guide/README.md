@@ -37,22 +37,22 @@
 
 ---
 
-📡 API Endpoints 🍲
+## 📡 API Endpoints 🍲
 
-Endpoint	What it does
-/recipes/complexSearch	Search recipes with filters
-/recipes/{id}/information	Get recipe details
-/recipes/{id}/nutritionWidget	Fetch nutrition data
-/food/ingredients/search	Find ingredients by name
-/recipes/findByIngredients	Match recipes by ingredient list
-🚧 Future Roadmap
-✨ User Authentication (so you can save favorites!)
+| Endpoint                             | Description                          |
+| ------------------------------------ | ------------------------------------ |
+| `/recipes/complexSearch`             | Search recipes with filters          |
+| `/recipes/{id}/information`          | Get recipe details                   |
+| `/recipes/{id}/nutritionWidget`      | Fetch nutrition data                 |
+| `/food/ingredients/search`           | Find ingredients by name             |
+| `/recipes/findByIngredients`         | Match recipes by ingredient list     |
 
-🗓️ Meal Planner + Calendar view
+---
 
-🛒 Shopping List Generator
+## 🚧 Future Roadmap
 
-📤 Social Sharing (brag about your creations!)
-
-❤️ Recipe Collections & Tags
-
+- ✨ **User Authentication** — so you can save favorites!  
+- 🗓️ **Meal Planner + Calendar View**  
+- 🛒 **Shopping List Generator**  
+- 📤 **Social Sharing** — brag about your creations!  
+- ❤️ **Recipe Collections & Tags**
