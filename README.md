@@ -2,56 +2,82 @@
 
 # Culina AI 🍽️✨
 
-> **Your AI-powered sous-chef for discovering mouth‑watering recipes and planning delicious meals!**
+![Java](https://img.shields.io/badge/Java-17-orange)
+![Spring Boot](https://img.shields.io/badge/SpringBoot-Latest-green)
+![React](https://img.shields.io/badge/React-18.3.1-blue)
+![Material UI](https://img.shields.io/badge/Material%20UI-5.16.7-blueviolet)
+
+> **Your AI‑powered sous‑chef for discovering mouth‑watering recipes and planning delicious meals!**
 
 ---
 
-## 🐱‍🍳 What’s Inside?
+## Table of Contents
 
-- **🔍 Recipe Discovery**  
-  Find new dishes by ingredients, diets, or meal types—no more “What’s for dinner?” panic!
-
-- **💪 Nutritional Analysis**  
-  Get a full nutrition breakdown so you know exactly what you’re eating.
-
-- **🎨 User-Friendly Interface**  
-  Sleek, Material UI–powered design that looks fab on both desktop and mobile.
-
-- **⚡ Super Responsive**  
-  Works like a charm on your phone, tablet, or giant monitor—your choice!
+- [Overview](#overview)
+- [Tech Stack](#tech-stack)  
+  - [Backend](#backend)  
+  - [Frontend](#frontend)  
+- [API Endpoints](#api-endpoints)  
+  - [Backend](#backend-api)  
+  - [Frontend](#frontend-api)  
+- [Roadmap](#roadmap)
 
 ---
 
-## 🏗️ Tech Stack
+## Overview
 
-| Layer               | Tools & Versions                                              |
-|---------------------|---------------------------------------------------------------|
-| **Framework**       | React.js 18.3.1 + React Router 6.26.1                         |
-| **UI**              | Material UI 5.16.7    |
-| **Animations**      | Framer Motion 11.3.19                                         |
-| **Styling**         | FontAwesome 6.6.0, Open Sans & Roboto (via Fontsource)       |
-| **State**           | React Context API & Hooks                                     |
-| **API**             | Spoonacular Food API                                                                         |
-| **Build & Lint**    | React Scripts 5.0.1, ESLint                                   |
+Culina AI is an intelligent recipe platform that leverages generative AI to craft custom recipes based on the ingredients you have, your cuisine preferences, and any dietary restrictions. Whether you’re staring at your pantry wondering “What can I make?”, or planning a full week’s menu, Culina AI has you covered.
 
 ---
 
-## 📡 API Endpoints 🍲
+## Tech Stack
 
-| Endpoint                             | Description                          |
-| ------------------------------------ | ------------------------------------ |
-| `/recipes/complexSearch`             | Search recipes with filters          |
-| `/recipes/{id}/information`          | Get recipe details                   |
-| `/recipes/{id}/nutritionWidget`      | Fetch nutrition data                 |
-| `/food/ingredients/search`           | Find ingredients by name             |
-| `/recipes/findByIngredients`         | Match recipes by ingredient list     |
+### Backend
+
+- **Language:** Java 17  
+- **Framework:** Spring Boot + Spring AI  
+- **Authentication:** Google OAuth 2.0  
+- **Containerization:** Docker  
+- **AI Integration:** OpenAI API via Spring AI  
+
+### Frontend
+
+- **Library:** React 18.3.1  
+- **UI Framework:** Material UI 5.16.7  
+- **Animations:** Framer Motion 11.3.19  
+- **Styling:** FontAwesome, Open Sans & Roboto (via Fontsource)  
+- **State Management:** React Context & Hooks  
+- **API:** Spoonacular Food API (for discovery)  
+- **Build & Lint:** React Scripts 5.0.1, ESLint  
 
 ---
 
-## 🚧 Future Roadmap
+## API Endpoints
 
-- ✨ **User Authentication** — so you can save favorites!  
-- 🗓️ **Meal Planner + Calendar View**  
-- 🛒 **Shopping List Generator**  
-- 📤 **Social Sharing** — brag about your creations!  
-- ❤️ **Recipe Collections & Tags**
+### Backend API
+
+| Method | Endpoint                   | Description                                  |
+| ------ | -------------------------- | -------------------------------------------- |
+| POST   | `/api/ask-ai`              | General AI conversational endpoint           |
+| POST   | `/api/recipe-generator`    | Generate a recipe from ingredients & params  |
+
+### Frontend / Public API
+
+| Method | Endpoint                           | Description                          |
+| ------ | ---------------------------------- | ------------------------------------ |
+| GET    | `/recipes/complexSearch`           | Search recipes with filters          |
+| GET    | `/recipes/{id}/information`        | Get recipe details                   |
+| GET    | `/recipes/{id}/nutritionWidget`    | Fetch nutrition data                 |
+| GET    | `/food/ingredients/search`         | Find ingredients by name             |
+| GET    | `/recipes/findByIngredients`       | Match recipes by ingredient list     |
+
+---
+
+## Roadmap
+
+- ✨ **User Authentication** — Save favorites & meal plans  
+- 🗓️ **Meal Planner & Calendar** — Weekly/monthly views  
+- 🛒 **Shopping List Generator** — Auto‑generate lists  
+- 📤 **Social Sharing** — Share recipes & plans  
+- ❤️ **Recipe Collections & Tags** — Organize your favorites  
+
