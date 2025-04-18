@@ -36,3 +36,23 @@
 | **Build & Lint**    | React Scripts 5.0.1, ESLint                                   |
 
 ---
+
+📡 API Endpoints 🍲
+
+Endpoint	What it does
+/recipes/complexSearch	Search recipes with filters
+/recipes/{id}/information	Get recipe details
+/recipes/{id}/nutritionWidget	Fetch nutrition data
+/food/ingredients/search	Find ingredients by name
+/recipes/findByIngredients	Match recipes by ingredient list
+🚧 Future Roadmap
+✨ User Authentication (so you can save favorites!)
+
+🗓️ Meal Planner + Calendar view
+
+🛒 Shopping List Generator
+
+📤 Social Sharing (brag about your creations!)
+
+❤️ Recipe Collections & Tags
+
