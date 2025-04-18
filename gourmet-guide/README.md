@@ -1,83 +1,40 @@
-# Gourmet Guide
+<img width="1618" alt="Screenshot 2024-10-10 at 9 05 44 AM" src="https://github.com/user-attachments/assets/78e2d6d8-136a-4f78-8bfa-93bee4c45baf" />
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Culina AI 🍽️✨
 
-## Environment Setup
+![Culina AI Logo](assets/images/logo.png)
 
-Before running this application, you need to set up your environment variables:
+> **Your AI-powered sous-chef for discovering mouth‑watering recipes and planning delicious meals!**
 
-1. Create a `.env` file in the root directory of the project
-2. Add your Spoonacular API key to the file:
-   ```
-   REACT_APP_SPOONACULAR_API_KEY=your_api_key_here
-   ```
-3. Get your API key by signing up at [Spoonacular Food API](https://spoonacular.com/food-api)
+---
 
-**Note:** The `.env` file is included in `.gitignore` and will not be committed to the repository for security reasons. A `.env.example` file is provided as a template.
+## 🐱‍🍳 What’s Inside?
 
-## Available Scripts
+- **🔍 Recipe Discovery**  
+  Find new dishes by ingredients, diets, or meal types—no more “What’s for dinner?” panic!
 
-In the project directory, you can run:
+- **💪 Nutritional Analysis**  
+  Get a full nutrition breakdown so you know exactly what you’re eating.
 
-### `npm start`
+- **🎨 User-Friendly Interface**  
+  Sleek, Material UI–powered design that looks fab on both desktop and mobile.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **⚡ Super Responsive**  
+  Works like a charm on your phone, tablet, or giant monitor—your choice!
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## 🏗️ Tech Stack
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+| Layer               | Tools & Versions                                              |
+|---------------------|---------------------------------------------------------------|
+| **Framework**       | React.js 18.3.1 + React Router 6.26.1                         |
+| **UI**              | Material UI 5.16.7, MUI Joy 5.0.0‑beta.48, Emotion 11.13.0    |
+| **Animations**      | Framer Motion 11.3.19                                         |
+| **Styling**         | FontAwesome 6.6.0, Open Sans & Roboto (via Fontsource)       |
+| **State**           | React Context API & Hooks                                     |
+| **API**             | Spoonacular Food API                                          |
+| **Testing**         | Jest & React Testing Library                                  |
+| **Build & Lint**    | React Scripts 5.0.1, ESLint                                   |
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
