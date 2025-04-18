@@ -2,8 +2,6 @@
 
 # Culina AI 🍽️✨
 
-![Culina AI Logo](assets/images/logo.png)
-
 > **Your AI-powered sous-chef for discovering mouth‑watering recipes and planning delicious meals!**
 
 ---
